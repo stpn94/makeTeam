@@ -55,16 +55,27 @@ function makeTeam(teamArr) {
      * 만약 인덱스를 부여받지 않는 사람이 6이면 */
     
     let htmls = '';
+    let k = 0;
+    
+    const f = function() {
 
-    for (let k = 0; k < student.length; k++) {
+        if(k == student.length) {
+            document.getElementById('team1-list').innerHTML = htmls;
+            return;
+        }
+
         if (k % 4 == 0) {
             htmls += newFunction_1(k);
         }
-        htmls += newFunction(k);
+
+        htmls += newFunction(k++);
+
+        setTimeout(f, 1000);
     }
-//s
-    document.getElementById('team1-list').innerHTML = htmls;
+
+    setTimeout(f, 1000);
 }
+
 function newFunction_1(k) {
     const data = (k / 4 + 1) + "조";
     const html = "<l1>======" + data + "=======</l1>"
